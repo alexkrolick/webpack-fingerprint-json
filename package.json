@@ -1,21 +1,19 @@
 {
-  "name": "webpack-fingerprint",
-  "version": "0.1.3",
-  "description": "Generate list of all libraries imported in bundling process and their versions.",
+  "name": "webpack-fingerprint-json",
+  "version": "0.0.1",
+  "description": "Write a json file when build is done",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/BTMPL/webpack-fingerprint"
+    "url": "https://github.com/alexkrolick/webpack-fingerprint-json"
   },
   "keywords": [
     "webpack",
-    "npm",
-    "licenses",
-    "versions"
+    "npm"
   ],
-  "author": "Bartosz Szczecinski <baphemot@gmail.com>",
+  "author": "Alex Krolick <alexander.krolick+npm@gmail.com>",
   "license": "MIT"
 }

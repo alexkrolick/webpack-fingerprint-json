@@ -1,18 +1,12 @@
 Webpack Fingerprint Plugin
 ====================
 
-This plugin will generate list of node modules (along with their version and licence)
-which were imported into the bundle and place it in an JSON file
+Writes a JSON file with build metadata
 
-The most common usage will be for tracking what versions are deployed with current version
-of your application and tracking their licenses for legal requirements.
-
-## Installation
-
-The plugin is available via [npm](https://www.npmjs.com/package/webpack-fingerprint):
+Based on [Webpack Fingerprint](https://www.npmjs.com/package/webpack-fingerprint) but without traversing package dependencies
 
 ```
-$ npm install --save webpack-fingerprint
+$ npm install --save webpack-fingerprint-json
 ```
 
 ## Examples
@@ -36,27 +30,12 @@ Will produce a file called `fingerprint.json` with following info:
 ```js
 {
   "date": "2017-09-17T15:56:50.468Z",
-  "version": "1.0.0",
-  "packages": {
-    "babel-loader": {
-      "version": "7.1.2",
-      "license": "MIT"
-    }
-    "react": {
-      "version": "15.6.1",
-      "license": "BSD-3-Clause"
-    }
-    "react-dom": {
-      "version": "15.6.1",
-      "license": "BSD-3-Clause"
-    }
-  }
 }
 ```
 
 ### Custom information
 
-You can provide additional information to also be stored in the resulting file. To do so, pass a `additional` field on the configuration object.
+You can provide additional information to also be stored in the resulting file. To do so, add additional fields to the configuration object.
 
 ```js
 var WebpackFingerprint = require("webpack-fingerprint");
@@ -64,28 +43,7 @@ var WebpackFingerprint = require("webpack-fingerprint");
 module.exports = {
   plugins: [    
     new WebpackFingerprint({
-      additional: {
-        build_number: process.env.CI_BUILD_NUMBER
-      }
-    })
-  ]
-}
-```
-
-### Custom package details
-
-You can also provide a transformer that will allow you to change the default information stored for each package. To do so, provide a `transformer` function, which will be called with each module `package.json` file and its return value will be used. If `null` is returned by all transformers, the `package` field will be omitted.
-
-```js
-var WebpackFingerprint = require("webpack-fingerprint");
-
-module.exports = {
-  plugins: [    
-    new WebpackFingerprint({
-      transformer: (package) => ({
-        version: package.version,
-        author: package.author
-      })
+      build_number: process.env.CI_BUILD_NUMBER
     })
   ]
 }
