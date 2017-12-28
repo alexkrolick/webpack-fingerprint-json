@@ -14,7 +14,7 @@ $ npm install --save webpack-fingerprint-json
 ### Basic
 
 ```js
-var WebpackFingerprint = require("webpack-fingerprint");
+const WebpackFingerprint = require("webpack-fingerprint-json");
 
 module.exports = {
   plugins: [    
@@ -38,12 +38,14 @@ Will produce a file called `fingerprint.json` with following info:
 You can provide additional information to also be stored in the resulting file. To do so, add additional fields to the configuration object.
 
 ```js
-var WebpackFingerprint = require("webpack-fingerprint");
+const WebpackFingerprint = require("webpack-fingerprint-json");
 
 module.exports = {
   plugins: [    
     new WebpackFingerprint({
-      build_number: process.env.CI_BUILD_NUMBER
+      json: {
+        build_number: process.env.CI_BUILD_NUMBER,
+      },
     })
   ]
 }

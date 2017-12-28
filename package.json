@@ -1,6 +1,6 @@
 {
   "name": "webpack-fingerprint-json",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Write a json file when build is done",
   "main": "index.js",
   "scripts": {
